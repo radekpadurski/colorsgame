@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import store from "./store";
+import MenuPage from './components/pages/MenuPage'
+import GamePage from './components/pages/GamePage'
+import SettingsPage from './components/pages/SettingsPage'
+import HighScorePage from './components/pages/HighScorePage'
+import { Route, Switch, HashRouter as Router, Redirect } from 'react-router-dom'
+import { routes } from './routes';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const routing = (
+    <Provider store={store}>
+        <Router >
+            <Route exact path={routes.home} render={() => <Redirect to="/menu" />} />
+            <Route path={routes.menu} component={MenuPage} />
+            <Route path={routes.game} component={GamePage} />
+            <Route path={routes.settings} component={SettingsPage} />
+            <Route path={routes.highscore} component={HighScorePage} />
+        </Router>
+    </Provider>
+)
+ReactDOM.render(routing, document.getElementById('root'));
