@@ -2,7 +2,7 @@
 
 ## Demo:
 
-click : https://github.com/radekpadurski/colorsgame
+click : https://radekpadurski.github.io/colorsgame/
 
 ### run project locally:
 
